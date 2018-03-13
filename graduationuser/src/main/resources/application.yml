@@ -1,0 +1,53 @@
+
+spring:
+  redis:
+    host: ${address}
+    port: 6379
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://${address}/graduation_project
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    database: mysql
+    show-sql: true
+  profiles:
+    active: dev
+  application:
+      name: user-service-v1
+
+
+logging:
+  level:
+    root: info
+    demo: debug
+#  path: classpath:
+  file: root.log
+
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8090/eureka/
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8080
+#  address: 192.0.0.1
+
+---
+spring:
+  profiles: prod
+server:
+  address: 193.0.0.1
+
+---
+spring:
+  profiles: test
+server:
+  port: 8080

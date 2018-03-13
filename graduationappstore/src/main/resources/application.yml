@@ -1,0 +1,47 @@
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost/graduation_project
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    show-sql: true
+  application:
+    name: reource-store-service
+  http:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+# zuul:
+#  routes:
+#    users:
+#      path: /myusers/**
+#      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+#      url: https://downstream
+
+
+logging:
+  level:
+    root: info
+    demo: debug
+#  path: classpath:
+  file: root.log
+
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8090/eureka/
+server:
+  port: 8083
+  address: app.ssx.com
+

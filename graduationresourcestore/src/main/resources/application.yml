@@ -1,0 +1,45 @@
+
+spring:
+  redis:
+    host: ${address}
+    port: 6379
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://${address}/graduation_project
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+    database: mysql
+    show-sql: true
+  application:
+    name: resource-store-service-v2
+
+
+logging:
+  level:
+    root: info
+    demo: debug
+#  path: classpath:
+  file: root.log
+
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8090/eureka/
+
+#hystrix:
+#  command:
+#    default:
+#     execution:
+#       isolation:
+#         strategy: SEMAPHORE
+#         semaphore:
+#           timeoutInMilliseconds: 3000
+
+server:
+  port: 8088
